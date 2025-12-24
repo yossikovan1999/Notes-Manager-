@@ -55,3 +55,4 @@ export function genId(fix){
     const random = Math.floor(Math.random()*10000).toString(10);
     return `${fix}${Date.now().toString(10)}${random}`;
     }
+
