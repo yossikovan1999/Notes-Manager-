@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 
 
-const dataDir = path.resolve( '../data');
+const dataDir = path.resolve( './data');
 const usersFile = path.join(dataDir, 'users.json');
 const notesFile = path.join(dataDir, 'note.json');
 
@@ -55,3 +55,4 @@ export function genId(fix){
     const random = Math.floor(Math.random()*10000).toString(10);
     return `${fix}${Date.now().toString(10)}${random}`;
     }
+
