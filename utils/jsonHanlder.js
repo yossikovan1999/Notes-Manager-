@@ -50,3 +50,8 @@ export async function writeNotesAsync(notes) {
   await fs.writeFile(notesFile, JSON.stringify(notes, null, 2), 'utf-8');
 }
 
+
+export function genId(fix){
+    const random = Math.floor(Math.random()*10000).toString(10);
+    return `${fix}${Date.now().toString(10)}${random}`;
+    }
