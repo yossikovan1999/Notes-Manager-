@@ -21,11 +21,11 @@ export function ensureFiles() {
 
 
 
-export  async  function readNotesAsync() {
+async function readUsersAsync() {
   try {
-    const raw = await fs.readFile(notesFile, 'utf-8');
+    const raw = await fs.readFile(usersFile, 'utf-8');
     return JSON.parse(raw);
-  } catch (error) {
+  } catch (e) {
     return [];
   }
 }
@@ -38,7 +38,7 @@ export async function writeUsersAsync(users) {
 
 export async function readNotesAsync() {
   try {
-    const raw = await fsp.readFile(notesFile, 'utf-8');
+    const raw = await fs.readFile(notesFile, 'utf-8');
     return JSON.parse(raw);
   } catch (error) {
     return [];
@@ -49,3 +49,4 @@ export async function readNotesAsync() {
 export async function writeNotesAsync(notes) {
   await fs.writeFile(notesFile, JSON.stringify(notes, null, 2), 'utf-8');
 }
+
