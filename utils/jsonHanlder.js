@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 
 
-const dataDir = path.resolve( '../data');
+const dataDir = path.resolve( './data');
 const usersFile = path.join(dataDir, 'users.json');
 const notesFile = path.join(dataDir, 'note.json');
 
@@ -21,7 +21,7 @@ export function ensureFiles() {
 
 
 
-async function readUsersAsync() {
+export async function readUsersAsync() {
   try {
     const raw = await fs.readFile(usersFile, 'utf-8');
     return JSON.parse(raw);

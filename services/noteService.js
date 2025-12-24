@@ -1,5 +1,5 @@
 import HttpError from "../errors/HttpError.js";
-
+import {readNotesAsync, writeNotesAsync} from "../utils/jsonHanlder.js";
 import { v4 as uuidv4 } from 'uuid';
 
 /**
@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 export async function addNote(owner, content){
 
     //read all the notes from the file
-    const notes = [];
+    const notes = await readNotesAsync();
     
     if(!owner || !content){
         throw new HttpError("content and ower must exist", 400); 
@@ -18,12 +18,18 @@ export async function addNote(owner, content){
 
     const note = {id : uuidv4(), owner : owner, content : content};
 
-    //add to notes file here
+    notes.push(note);
+
+    await writeNotesAsync(notes);
 
 }
 
 
 export async function getAllNotes(){
 
-    
+    //read all the notes from the file
+    const notes = await readNotesAsync();
+
+    return notes;
+
 }
